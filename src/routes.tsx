@@ -9,7 +9,14 @@ export const routes: RouteObject[] = [
         index: true,
         lazy: () => import('./pages/home'),
         handle: {
-          crumb: 'home',
+          crumb: 'Home',
+        },
+      },
+      {
+        path: 'courtreserve/events',
+        lazy: () => import('./pages/courtreserve/events'),
+        handle: {
+          crumb: 'Courtreserve',
         },
       },
       {
