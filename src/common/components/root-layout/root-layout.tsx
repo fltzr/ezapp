@@ -16,6 +16,7 @@ const RootLayout = () => {
     <>
       <Header />
       <AppLayout
+        contentType={appLayoutStore.contentLayout}
         headerSelector='#h'
         navigation={<Navigation />}
         navigationOpen={appLayoutStore.isNavigationOpen}
