@@ -12,20 +12,14 @@ export default defineConfig({
         chunkFileNames: ({ name }) => {
           console.info(`nameCf: ${JSON.stringify(name, null, 2)}`);
 
-          if (/all\..+\.$/.test(name)) {
-            return 'locales/[name]-[hash][extname]';
+          if (/all.*/.test(name)) {
+            return 'locales/[name].js';
           }
 
           return 'chunks/[name]-[hash].js';
         },
-        entryFileNames: ({ name }) => {
-          console.info(`nameEf: ${JSON.stringify(name, null, 2)}`);
-
-          return 'entry/[name]-[hash].js';
-        },
+        entryFileNames: 'entry/[name]-[hash].js',
         assetFileNames: ({ name }) => {
-          console.info(`name: ${JSON.stringify(name, null, 2)}`);
-
           if (!name) {
             return 'assets/[name]-[hash][extname]';
           }
