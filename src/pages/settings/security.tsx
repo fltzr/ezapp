@@ -1,96 +1,33 @@
-/* eslint-disable no-void */
-/* eslint-disable react/jsx-props-no-spreading */
-import { type SubmitHandler, FormProvider, useForm } from 'react-hook-form';
-import { useQuery } from '@tanstack/react-query';
-import { SpaceBetween } from '@cloudscape-design/components';
+/* eslint-disable jsdoc/require-description-complete-sentence */
+/* eslint-disable jsdoc/require-asterisk-prefix */
+/* eslint-disable tsdoc/syntax */
 import { useEffect } from 'react';
-import { FormSelect } from '@/common/components/form/form-select/form-select';
-import { FormInput } from '@/common/components/form/form-input/form-input';
+import { SecuritSettingsForm } from './security/components/security-settings-form';
+import { useAppLayoutStore } from '@/store/use-app-layout-store';
 
 //https://chat.openai.com/share/283d3941-15b3-4ec2-8f9c-4cea49a8a9d6
 
-const fetchSecuritSettings = async () => {
-  await new Promise((r) => {
-    setTimeout(r, 3 * 1000);
-  });
-
-  return {
-    tfa: 'off',
-    recoveryPreference: 'text',
-  };
-};
-
-export type SecuritySettingsData = {
-  tfa: string;
-  recoveryPreference: string;
-  password: string;
-};
-
 const SettingsSecurity = () => {
-  const userPrefs = useQuery({
-    queryKey: ['user-security-settings'],
-    queryFn: fetchSecuritSettings,
-  });
-
-  const methods = useForm<SecuritySettingsData>({
-    defaultValues: userPrefs.data,
-  });
-
-  const handleOnSubmit: SubmitHandler<SecuritySettingsData> = (data: SecuritySettingsData) => {
-    console.info('Form data: ', data);
-  };
+  const appLayoutStore = useAppLayoutStore();
 
   useEffect(() => {
-    methods.reset(userPrefs.data);
+    appLayoutStore.setContentLayout('form');
 
-    return () => methods.reset({});
-  }, [methods, userPrefs.data]);
+    return () => appLayoutStore.setContentLayout('default');
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  return (
-    <FormProvider {...methods}>
-      <form
-        onSubmit={(event) => {
-          event.preventDefault();
-          void methods.handleSubmit(handleOnSubmit);
-        }}
-      >
-        <SpaceBetween size='m' direction='vertical'>
-          <FormSelect
-            name={'tfa'}
-            label='Two-factor authentication'
-            constraintText='Default value is on.'
-            control={methods.control}
-            placeholder='Choose...'
-            isLoading={userPrefs.isLoading}
-            options={[
-              { label: 'on', value: 'on' },
-              { label: 'off', value: 'off' },
-            ]}
-          />
-          <FormSelect
-            name={'recoveryPreference'}
-            label='Account recovery preference'
-            constraintText='Default value is email.'
-            control={methods.control}
-            placeholder='Choose...'
-            isLoading={userPrefs.isLoading}
-            options={[
-              { label: 'email', value: 'email' },
-              { label: 'text', value: 'text' },
-            ]}
-          />
-
-          <FormInput
-            name='password'
-            type='password'
-            label='Password'
-            control={methods.control}
-            placeholder='Enter a password...'
-          />
-        </SpaceBetween>
-      </form>
-    </FormProvider>
-  );
+  return <SecuritSettingsForm />;
 };
 
 export const Component = SettingsSecurity;
+
+/**
+             <FormInput
+              name='password'
+              type='password'
+              label='Password'
+              control={methods.control}
+              placeholder='Enter a password...'
+            />
+ */
