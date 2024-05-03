@@ -40,6 +40,25 @@ export const routes: RouteObject[] = [
           },
         ],
       },
+      {
+        path: 'products',
+        handle: {
+          crumb: 'Products',
+        },
+        children: [
+          {
+            index: true,
+            element: <Navigate replace to='/products/create' />,
+          },
+          {
+            path: 'create',
+            lazy: () => import('./pages/products/create'),
+            handle: {
+              crumb: 'Create',
+            },
+          },
+        ],
+      },
     ],
   },
 ];

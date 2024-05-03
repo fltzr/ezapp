@@ -28,6 +28,18 @@ export const Navigation = () => {
         },
         {
           type: 'section',
+          text: 'Products',
+          items: [
+            {
+              type: 'link',
+              text: 'Create',
+              href: '/products/create',
+            },
+          ],
+        },
+        { type: 'divider' },
+        {
+          type: 'section',
           text: 'Settings',
           items: [
             {
