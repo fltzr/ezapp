@@ -52,7 +52,7 @@ export const routes: RouteObject[] = [
           },
           {
             path: 'create',
-            lazy: () => import('./pages/products/create'),
+            lazy: () => import('./pages/products copy/create'),
             handle: {
               crumb: 'Create',
             },
