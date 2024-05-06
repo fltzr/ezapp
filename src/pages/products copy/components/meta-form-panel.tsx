@@ -1,10 +1,11 @@
 /* eslint-disable @eslint-react/no-complicated-conditional-rendering */
 /* eslint-disable no-nested-ternary */
 import { useFormContext } from 'react-hook-form';
-import { ExpandableSection, SpaceBetween } from '@cloudscape-design/components';
+import { ExpandableSection, HelpPanel, Link, SpaceBetween } from '@cloudscape-design/components';
 import type { Product } from '../schema/product';
 import { useManufacturerApi } from '../data-access/manufacturer';
 import { CategorySelect } from './category-select';
+import { useAppLayoutStore } from '@/store/use-app-layout-store';
 
 type MetaFormPanelProps = {
   setManufacturerModalOpen: (state: boolean) => void;
@@ -17,6 +18,7 @@ export const MetaFormPanel = ({
   setProductTypeModalOpen,
   setCatalogCategoryModalOpen,
 }: MetaFormPanelProps) => {
+  const { setToolsOpen, setToolsContent } = useAppLayoutStore();
   const { control } = useFormContext<Product>();
   const { getManufacturers } = useManufacturerApi();
 
@@ -36,6 +38,17 @@ export const MetaFormPanel = ({
               : getManufacturers.isError
               ? 'error'
               : 'finished'
+          }
+          info={
+            <Link
+              variant='info'
+              onFollow={() => {
+                setToolsOpen(true);
+                setToolsContent(<HelpPanel>product-form-panel</HelpPanel>);
+              }}
+            >
+              info
+            </Link>
           }
           onAddNew={() => setProductTypeModalOpen(true)}
           onRefresh={() => {
@@ -59,6 +72,17 @@ export const MetaFormPanel = ({
               ? 'error'
               : 'finished'
           }
+          info={
+            <Link
+              variant='info'
+              onFollow={() => {
+                setToolsOpen(true);
+                setToolsContent(<HelpPanel>product-form-panel</HelpPanel>);
+              }}
+            >
+              info
+            </Link>
+          }
           onAddNew={() => setCatalogCategoryModalOpen(true)}
           onRefresh={() => {
             getManufacturers.refetch().catch((error) => console.error(error));
@@ -80,6 +104,17 @@ export const MetaFormPanel = ({
               : getManufacturers.isError
               ? 'error'
               : 'finished'
+          }
+          info={
+            <Link
+              variant='info'
+              onFollow={() => {
+                setToolsOpen(true);
+                setToolsContent(<HelpPanel>product-form-panel</HelpPanel>);
+              }}
+            >
+              info
+            </Link>
           }
           onAddNew={() => setManufacturerModalOpen(true)}
           onRefresh={() => {

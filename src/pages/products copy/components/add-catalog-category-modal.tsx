@@ -32,7 +32,7 @@ export const AddCatalogCategoryModal = ({ isVisible, onClose }: AddCatalogCatego
             <Button formAction='none' onClick={handleLeaveForm}>
               Cancel
             </Button>
-            <Button variant='primary' form='form_create-manufacturer' formAction='submit'>
+            <Button variant='primary' form='form_create-catalog-category' formAction='submit'>
               Add catalog category
             </Button>
           </SpaceBetween>

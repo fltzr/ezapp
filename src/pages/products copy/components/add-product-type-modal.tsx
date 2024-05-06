@@ -32,7 +32,7 @@ export const AddProductTypeModal = ({ isVisible, onClose }: AddProductTypeModalP
             <Button formAction='none' onClick={handleLeaveForm}>
               Cancel
             </Button>
-            <Button variant='primary' form='form_create-manufacturer' formAction='submit'>
+            <Button variant='primary' form='form_create-product-type' formAction='submit'>
               Add product type
             </Button>
           </SpaceBetween>
@@ -41,7 +41,7 @@ export const AddProductTypeModal = ({ isVisible, onClose }: AddProductTypeModalP
       onDismiss={handleLeaveForm}
     >
       <BaseForm
-        formId='form_create-catalog-category'
+        formId='form_create-catalog-product-type'
         zodSchema={createMetaItemSchema}
         formRef={formRef}
         onSubmit={(data: CreateMetaItem) => {

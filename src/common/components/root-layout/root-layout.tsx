@@ -20,7 +20,7 @@ const RootLayout = () => {
         headerSelector='#h'
         navigation={<Navigation />}
         navigationOpen={appLayoutStore.isNavigationOpen}
-        tools={appLayoutStore.toolsContent}
+        tools={appLayoutStore.toolsContent ?? undefined}
         toolsOpen={appLayoutStore.isToolsOpen}
         toolsHide={appLayoutStore.toolsContent === undefined}
         splitPanel={appLayoutStore.splitPanelContent}
