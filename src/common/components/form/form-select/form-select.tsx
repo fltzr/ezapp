@@ -4,17 +4,15 @@ import {
   type SelectProps,
   FormField,
   Select,
-  Spinner,
 } from '@cloudscape-design/components';
 import { type ControllerProps, type FieldValues, useController } from 'react-hook-form';
 
-type FormSelectProps<T extends FieldValues> = Omit<
+export type FormSelectProps<T extends FieldValues> = Omit<
   SelectProps,
   'name' | 'value' | 'options' | 'selectedOption'
 > &
   Omit<FormFieldProps, 'errorText'> &
   Pick<ControllerProps<T>, 'control' | 'name' | 'rules'> & {
-    isLoading?: boolean;
     options: SelectProps.Option[];
   };
 
@@ -22,7 +20,6 @@ export const FormSelect = <T extends FieldValues>({
   name,
   control,
   rules,
-  isLoading,
   options,
   ...props
 }: FormSelectProps<T>) => {
@@ -45,17 +42,14 @@ export const FormSelect = <T extends FieldValues>({
       secondaryControl={props.secondaryControl}
       errorText={error?.message}
     >
-      {isLoading ? (
-        <Spinner size='normal' />
-      ) : (
-        <Select
-          {...props}
-          ref={field.ref}
-          options={options}
-          selectedOption={options.find((option) => option.value === field.value) ?? {}}
-          onChange={handleOnChange}
-        />
-      )}
+      <Select
+        {...props}
+        ref={field.ref}
+        placeholder={props.placeholder}
+        options={options}
+        selectedOption={options.find((option) => option.value === field.value) ?? {}}
+        onChange={handleOnChange}
+      />
     </FormField>
   );
 };

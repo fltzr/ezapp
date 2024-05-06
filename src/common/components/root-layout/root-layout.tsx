@@ -1,10 +1,9 @@
 import { Outlet } from 'react-router-dom';
-import { AppLayout, SpaceBetween } from '@cloudscape-design/components';
+import { AppLayout } from '@cloudscape-design/components';
 import { useAppLayoutStore } from '@/store/use-app-layout-store';
 import { Navigation } from '@/common/components/navigation/sidenav';
 import { Notifications } from '@/common/components/notification/notification';
 import { Header } from '@/common/components/header/header';
-import { Breadcrumbs } from '@/common/components/breadcrumbs/breadcrumbs';
 import { useClearNotifications } from '@/common/hooks/use-clear-notifications';
 
 const RootLayout = () => {
@@ -16,6 +15,7 @@ const RootLayout = () => {
     <>
       <Header />
       <AppLayout
+        stickyNotifications
         contentType={appLayoutStore.contentLayout}
         headerSelector='#h'
         navigation={<Navigation />}
@@ -26,12 +26,7 @@ const RootLayout = () => {
         splitPanel={appLayoutStore.splitPanelContent}
         splitPanelOpen={appLayoutStore.isSplitPanelOpen}
         notifications={<Notifications />}
-        content={
-          <SpaceBetween size='xl' direction='vertical'>
-            <Breadcrumbs />
-            <Outlet />
-          </SpaceBetween>
-        }
+        content={<Outlet />}
         onNavigationChange={({ detail: { open } }) => {
           appLayoutStore.setNavigationOpen(open);
         }}
