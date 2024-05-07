@@ -1,9 +1,11 @@
 import { useWatch } from 'react-hook-form';
 import {
+  Box,
   Button,
   ColumnLayout,
   Container,
   ExpandableSection,
+  Grid,
   SpaceBetween,
 } from '@cloudscape-design/components';
 import { useNavigate } from 'react-router-dom';
@@ -31,20 +33,26 @@ export const SummaryPanel = () => {
         </SpaceBetween>
       </ExpandableSection>
       <Container variant='stacked'>
-        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-          <Button
-            formAction='none'
-            onClick={(event) => {
-              event.preventDefault();
-              navigate(-1);
-            }}
-          >
-            Cancel
-          </Button>
-          <Button variant='primary' form='form_create-product' formAction='submit'>
-            Submit
-          </Button>
-        </div>
+        <Grid
+          gridDefinition={[{ colspan: { default: 6, m: 12 } }, { colspan: { default: 6, m: 12 } }]}
+        >
+          <Box>
+            <Button
+              formAction='none'
+              onClick={(event) => {
+                event.preventDefault();
+                navigate(-1);
+              }}
+            >
+              Cancel
+            </Button>
+          </Box>
+          <Box>
+            <Button variant='primary' form='form_create-product' formAction='submit'>
+              Submit
+            </Button>
+          </Box>
+        </Grid>
       </Container>
     </div>
   );
