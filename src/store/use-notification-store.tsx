@@ -1,3 +1,4 @@
+import { nanoid } from 'nanoid';
 import { create } from 'zustand';
 
 type NotificationState = {
@@ -18,7 +19,7 @@ export const useNotificationStore = create<NotificationState & NotificationActio
 
   // Actions
   addNotification: (notification) =>
-    set((s) => ({ notifications: [notification, ...s.notifications] })),
+    set((s) => ({ notifications: [{ ...notification, id: nanoid(5) }, ...s.notifications] })),
   removeNotification: (id) =>
     set((s) => ({
       notifications: s.notifications.filter((n) => n.id !== id),

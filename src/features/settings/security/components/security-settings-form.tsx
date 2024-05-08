@@ -94,7 +94,6 @@ export const SecuritSettingsForm = () => {
                 constraintText='Default value is on.'
                 control={methods.control}
                 placeholder='Choose...'
-                isLoading={userPrefs.isLoading}
                 disabled={updateUserPrefs.isPending}
                 options={[
                   { label: 'on', value: 'on' },
@@ -107,7 +106,6 @@ export const SecuritSettingsForm = () => {
                 constraintText='Default value is email.'
                 control={methods.control}
                 placeholder='Choose...'
-                isLoading={userPrefs.isLoading}
                 disabled={updateUserPrefs.isPending}
                 options={[
                   { label: 'email', value: 'email' },
