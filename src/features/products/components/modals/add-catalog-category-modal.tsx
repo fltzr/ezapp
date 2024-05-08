@@ -1,6 +1,6 @@
 import { Box, Button, Header, Modal, SpaceBetween } from '@cloudscape-design/components';
 import { useRef } from 'react';
-import { type CreateMetaItem, createMetaItemSchema } from '../schema/meta-item';
+import { type CreateMetaItem, createMetaItemSchema } from '../../schema/meta-item';
 import { ControlListEditor } from '@/common/components/control-list/control-list';
 import { BaseForm } from '@/common/components/form/base-form/base-form';
 import { FormInput } from '@/common/components/form/form-input/form-input';

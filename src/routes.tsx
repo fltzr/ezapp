@@ -7,21 +7,21 @@ export const routes: RouteObject[] = [
     children: [
       {
         index: true,
-        lazy: () => import('./pages/home'),
+        lazy: () => import('./features/home'),
         handle: {
           crumb: 'Home',
         },
       },
       {
         path: 'courtreserve/events',
-        lazy: () => import('./pages/courtreserve/events'),
+        lazy: () => import('./features/courtreserve/events'),
         handle: {
           crumb: 'Courtreserve',
         },
       },
       {
         path: 'settings',
-        lazy: () => import('./pages/settings/settings'),
+        lazy: () => import('./features/settings/settings'),
         handle: {
           crumb: 'Settings',
         },
@@ -32,11 +32,11 @@ export const routes: RouteObject[] = [
           },
           {
             path: 'profile',
-            lazy: () => import('./pages/settings/profile'),
+            lazy: () => import('./features/settings/profile'),
           },
           {
             path: 'security',
-            lazy: () => import('./pages/settings/security'),
+            lazy: () => import('./features/settings/security'),
           },
         ],
       },
@@ -52,7 +52,7 @@ export const routes: RouteObject[] = [
           },
           {
             path: 'create',
-            lazy: () => import('./pages/products copy/create'),
+            lazy: () => import('./features/products/create'),
             handle: {
               crumb: 'Create',
             },

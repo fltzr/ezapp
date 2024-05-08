@@ -1,6 +1,6 @@
 import { useFormContext } from 'react-hook-form';
 import { ExpandableSection, HelpPanel, Link, SpaceBetween } from '@cloudscape-design/components';
-import type { Product } from '../schema/product';
+import type { Product } from '../../schema/product';
 import { FormInput } from '@/common/components/form/form-input/form-input';
 import { useAppLayoutStore } from '@/store/use-app-layout-store';
 

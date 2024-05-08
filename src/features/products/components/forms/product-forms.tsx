@@ -7,10 +7,10 @@ import {
   Link,
   SpaceBetween,
 } from '@cloudscape-design/components';
-import { type Product, productSchema } from '../schema/product';
+import { type Product, productSchema } from '../../schema/product';
+import { SummaryPanel } from '../summary-panel';
 import { ProductFormPanel } from './product-form-panel';
 import { MetaFormPanel } from './meta-form-panel';
-import { SummaryPanel } from './summary-panel';
 import { BaseForm } from '@/common/components/form/base-form/base-form';
 import { Breadcrumbs } from '@/common/components/breadcrumbs/breadcrumbs';
 import { ControlListEditor } from '@/common/components/control-list/control-list';
@@ -46,10 +46,20 @@ export const ProductForms = ({
     <BaseForm
       formId='form_create-product'
       formRef={formRef}
-      zodSchema={productSchema}
+      zodSchema={productSchema.transform((data) => ({
+        ...data,
+        manufacturer: data.manufacturer.value,
+        productType: data.productType.value,
+        catalogCategory: data.catalogCategory.value,
+        controlList: data.controlList.map((c) => ({
+          ...c,
+          permittedActions: c.permittedActions.map((a) => a.value),
+          accessType: c.accessType.value,
+        })),
+      }))}
       onSubmit={onSubmit}
     >
-      <Grid gridDefinition={[{ colspan: 8 }, { colspan: 4 }]}>
+      <Grid gridDefinition={[{ colspan: { default: 8, l: 4 } }, { colspan: { default: 4 } }]}>
         <SpaceBetween direction='vertical' size='m'>
           <Breadcrumbs />
           <Header

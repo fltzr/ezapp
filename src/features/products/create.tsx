@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
 import { Box } from '@cloudscape-design/components';
 import type { Product } from './schema/product';
-import { ProductForms } from './components/product-forms';
-import { AddManufacturerModal } from './components/add-manufacturer-modal';
-import { AddCatalogCategoryModal } from './components/add-catalog-category-modal';
-import { AddProductTypeModal } from './components/add-product-type-modal';
+import { ProductForms } from './components/forms/product-forms';
+import { AddManufacturerModal } from './components/modals/add-manufacturer-modal';
+import { AddCatalogCategoryModal } from './components/modals/add-catalog-category-modal';
+import { AddProductTypeModal } from './components/modals/add-product-type-modal';
 import { useAppLayoutStore } from '@/store/use-app-layout-store';
 
 const CreateProductPage = () => {
@@ -27,12 +27,12 @@ const CreateProductPage = () => {
   }, []);
 
   const handleSubmit = (data: Product) => {
-    setIsCatalogCategoryModalOpen(false);
+    console.info('Product data:');
     console.info(JSON.stringify(data, null, 2));
   };
 
   return (
-    <div style={{ maxWidth: '1375px' }}>
+    <div style={{ maxWidth: '1275px' }}>
       <Box margin={{ left: 'm' }}>
         <ProductForms
           formRef={formRef}

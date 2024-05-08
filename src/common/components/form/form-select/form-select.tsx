@@ -29,7 +29,7 @@ export const FormSelect = <T extends FieldValues>({
   } = useController<T>({ name, control, rules });
 
   const handleOnChange: SelectProps['onChange'] = (event) => {
-    field.onChange(event.detail.selectedOption.value);
+    field.onChange(event.detail.selectedOption);
   };
 
   return (
@@ -47,7 +47,7 @@ export const FormSelect = <T extends FieldValues>({
         ref={field.ref}
         placeholder={props.placeholder}
         options={options}
-        selectedOption={options.find((option) => option.value === field.value) ?? {}}
+        selectedOption={options.find((option) => option.value === field.value?.value) ?? {}}
         onChange={handleOnChange}
       />
     </FormField>

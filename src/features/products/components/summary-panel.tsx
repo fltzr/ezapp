@@ -1,11 +1,9 @@
 import { useWatch } from 'react-hook-form';
 import {
-  Box,
   Button,
   ColumnLayout,
   Container,
   ExpandableSection,
-  Grid,
   SpaceBetween,
 } from '@cloudscape-design/components';
 import { useNavigate } from 'react-router-dom';
@@ -27,32 +25,28 @@ export const SummaryPanel = () => {
           <KeyValuePair label='Price'>{formatPrice(values.price ?? 0)}</KeyValuePair>
         </ColumnLayout>
         <SpaceBetween direction='vertical' size='s'>
-          <KeyValuePair label='Manufacturer'>{values.manufacturer}</KeyValuePair>
-          <KeyValuePair label='Category'>{values.catalogCategory}</KeyValuePair>
-          <KeyValuePair label='Product type'>{values.productType}</KeyValuePair>
+          {/* <KeyValuePair label='Manufacturer'>{values.manufacturer?.label}</KeyValuePair>
+          <KeyValuePair label='Category'>{values.catalogCategory?.label}</KeyValuePair>
+          <KeyValuePair label='Product type'>{values.productType?.label}</KeyValuePair> */}
+          {JSON.stringify(values, null, 2)}
         </SpaceBetween>
       </ExpandableSection>
-      <Container variant='stacked'>
-        <Grid
-          gridDefinition={[{ colspan: { default: 6, m: 12 } }, { colspan: { default: 6, m: 12 } }]}
-        >
-          <Box>
-            <Button
-              formAction='none'
-              onClick={(event) => {
-                event.preventDefault();
-                navigate(-1);
-              }}
-            >
-              Cancel
-            </Button>
-          </Box>
-          <Box>
-            <Button variant='primary' form='form_create-product' formAction='submit'>
-              Submit
-            </Button>
-          </Box>
-        </Grid>
+      <Container fitHeight variant='stacked'>
+        <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+          <Button
+            wrapText={false}
+            formAction='none'
+            onClick={(event) => {
+              event.preventDefault();
+              navigate(-1);
+            }}
+          >
+            Cancel
+          </Button>
+          <Button wrapText={false} variant='primary' form='form_create-product' formAction='submit'>
+            Submit
+          </Button>
+        </div>
       </Container>
     </div>
   );
