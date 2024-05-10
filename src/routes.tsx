@@ -32,7 +32,10 @@ export const routes: RouteObject[] = [
           },
           {
             path: 'profile',
-            lazy: () => import('./features/settings/profile'),
+            lazy: () => import('./features/settings/profile/profile'),
+            handle: {
+              crumb: 'Account',
+            },
           },
           {
             path: 'security',

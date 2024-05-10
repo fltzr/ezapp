@@ -59,7 +59,9 @@ export const ProductForms = ({
       }))}
       onSubmit={onSubmit}
     >
-      <Grid gridDefinition={[{ colspan: { default: 8, l: 4 } }, { colspan: { default: 4 } }]}>
+      <Grid
+        gridDefinition={[{ colspan: { default: 12, m: 8 } }, { colspan: { default: 12, m: 4 } }]}
+      >
         <SpaceBetween direction='vertical' size='m'>
           <Breadcrumbs />
           <Header

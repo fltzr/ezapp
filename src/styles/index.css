@@ -18,8 +18,8 @@ body.awsui-dark-mode {
 }
 
 #h {
-  position: fixed;
   top: 0;
+  position: fixed;
   height: auto !important;
   z-index: 1002;
 }

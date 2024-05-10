@@ -87,7 +87,7 @@ const CourtreserveEventsPage = () => {
 
   return (
     <Table<CourtreserveEvent>
-      variant='container'
+      variant='embedded'
       items={events}
       columnDefinitions={eventTableColumnDefinitions}
       loading={isLoading}

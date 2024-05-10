@@ -32,28 +32,26 @@ const CreateProductPage = () => {
   };
 
   return (
-    <div style={{ maxWidth: '1275px' }}>
-      <Box margin={{ left: 'm' }}>
-        <ProductForms
-          formRef={formRef}
-          setManufacturerModalOpen={setIsManufacturerModalOpen}
-          setProductTypeModalOpen={setIsProductTypeModalOpen}
-          setCatalogCategoryModalOpen={setIsCatalogCategoryModalOpen}
-          onSubmit={handleSubmit}
-        />
-        <AddManufacturerModal
-          isVisible={isManufacturerModalOpen}
-          onClose={() => setIsManufacturerModalOpen(false)}
-        />
-        <AddProductTypeModal
-          isVisible={isProductTypeModalOpen}
-          onClose={() => setIsProductTypeModalOpen(false)}
-        />
-        <AddCatalogCategoryModal
-          isVisible={isCatalogCategoryModalOpen}
-          onClose={() => setIsCatalogCategoryModalOpen(false)}
-        />
-      </Box>
+    <div style={{ width: '1175px' }}>
+      <ProductForms
+        formRef={formRef}
+        setManufacturerModalOpen={setIsManufacturerModalOpen}
+        setProductTypeModalOpen={setIsProductTypeModalOpen}
+        setCatalogCategoryModalOpen={setIsCatalogCategoryModalOpen}
+        onSubmit={handleSubmit}
+      />
+      <AddManufacturerModal
+        isVisible={isManufacturerModalOpen}
+        onClose={() => setIsManufacturerModalOpen(false)}
+      />
+      <AddProductTypeModal
+        isVisible={isProductTypeModalOpen}
+        onClose={() => setIsProductTypeModalOpen(false)}
+      />
+      <AddCatalogCategoryModal
+        isVisible={isCatalogCategoryModalOpen}
+        onClose={() => setIsCatalogCategoryModalOpen(false)}
+      />
     </div>
   );
 };
